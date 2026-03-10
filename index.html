@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Back Pain Center Wentzville | Chiropractic & Rehabilitation</title>
+    <meta name="description" content="Personalized chiropractic care and rehabilitation in Wentzville, MO. Dr. Josh Baird, Dr. Mary Momper, and our team provide drug-free pain relief for all ages.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --maroon: #6b1d2a;
+            --maroon-deep: #4e1520;
+            --maroon-light: #8a2a3a;
+            --maroon-subtle: #a03347;
+            --cream: #faf7f4;
+            --cream-warm: #f3ece5;
+            --cream-dark: #e8dfd5;
+            --white: #ffffff;
+            --off-white: #fdfcfa;
+            --dark: #1e1a18;
+            --text: #2d2926;
+            --text-light: #6b6560;
+            --text-muted: #9a938d;
+            --gold: #c9a84c;
+            --gold-light: #dfc06e;
+            --border: rgba(107, 29, 42, 0.08);
+            --font-display: 'Fraunces', serif;
+            --font-body: 'DM Sans', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text);
+            background: var(--off-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAV */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nav.scrolled {
+            background: rgba(78, 21, 32, 0.97);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            padding: 0.5rem 2rem;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+        }
+        .nav-inner {
+            max-width: 1280px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+        .nav-logo img {
+            height: 52px; width: auto;
+            transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nav.scrolled .nav-logo img { height: 42px; }
+        .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+        .nav-links a {
+            color: rgba(255,255,255,0.85); text-decoration: none;
+            font-size: 0.9rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--white); }
+        .nav-cta {
+            background: var(--white) !important; color: var(--maroon) !important;
+            padding: 0.6rem 1.4rem; border-radius: 100px; font-weight: 700 !important;
+            transition: all 0.3s !important;
+        }
+        .nav-cta:hover { background: var(--cream) !important; transform: translateY(-1px); box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+        .nav-hamburger {
+            display: none; flex-direction: column; gap: 5px; cursor: pointer;
+            background: none; border: none; padding: 4px;
+        }
+        .nav-hamburger span { display: block; width: 26px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+
+        /* Mobile nav */
+        .mobile-nav-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(78, 21, 32, 0.98); z-index: 999;
+            flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+        }
+        .mobile-nav-overlay.open { display: flex; }
+        .mobile-nav-overlay a {
+            color: var(--white); font-family: var(--font-display); font-size: 1.6rem;
+            text-decoration: none; font-weight: 400; opacity: 0.85; transition: opacity 0.3s;
+        }
+        .mobile-nav-overlay a:hover { opacity: 1; }
+        .mobile-nav-close { position: absolute; top: 1.5rem; right: 2rem; background: none; border: none; color: var(--white); font-size: 2rem; cursor: pointer; }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(165deg, var(--maroon-deep) 0%, var(--maroon) 50%, var(--maroon-light) 100%);
+            display: flex; align-items: center; position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: -30%; right: -15%;
+            width: 70vw; height: 70vw; max-width: 900px; max-height: 900px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%); pointer-events: none;
+        }
+        .hero::after {
+            content: ''; position: absolute; bottom: -20%; left: -10%;
+            width: 50vw; height: 50vw; max-width: 600px; max-height: 600px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.06) 0%, transparent 70%); pointer-events: none;
+        }
+        .hero-grain {
+            position: absolute; inset: 0; opacity: 0.03; pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            background-size: 256px;
+        }
+        .hero-inner {
+            max-width: 1280px; margin: 0 auto; padding: 8rem 2rem 4rem;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+            align-items: center; position: relative; z-index: 1; width: 100%;
+        }
+        .hero-content { color: var(--white); }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 100px; padding: 0.4rem 1rem;
+            font-size: 0.8rem; font-weight: 500; letter-spacing: 0.05em;
+            text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+        .hero h1 {
+            font-family: var(--font-display); font-size: clamp(2.8rem, 5vw, 4.2rem);
+            font-weight: 500; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+        .hero h1 em { color: var(--gold-light); font-style: italic; }
+        .hero-sub {
+            font-size: 1.15rem; line-height: 1.7; color: rgba(255,255,255,0.65);
+            max-width: 480px; margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+        .hero-actions {
+            display: flex; align-items: center; gap: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: var(--white); color: var(--maroon);
+            padding: 1rem 2rem; border-radius: 100px; text-decoration: none;
+            font-weight: 700; font-size: 0.95rem; transition: all 0.3s; border: none; cursor: pointer;
+        }
+        .btn-primary:hover { background: var(--cream); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+        .btn-primary.inverted { background: var(--maroon); color: var(--white); }
+        .btn-primary.inverted:hover { background: var(--maroon-light); box-shadow: 0 8px 25px rgba(107, 29, 42, 0.3); }
+        .btn-secondary {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            color: rgba(255,255,255,0.75); text-decoration: none;
+            font-weight: 500; font-size: 0.95rem; transition: color 0.3s;
+        }
+        .btn-secondary:hover { color: var(--white); }
+        .hero-visual { position: relative; animation: fadeInUp 0.8s ease-out 0.3s both; }
+        .hero-card {
+            background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px; padding: 3rem;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+        }
+        .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .hero-stat { text-align: center; }
+        .hero-stat-number {
+            font-family: var(--font-display); font-size: 2.8rem; font-weight: 600;
+            color: var(--white); line-height: 1; margin-bottom: 0.3rem;
+        }
+        .hero-stat-number .accent { color: var(--gold-light); }
+        .hero-stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.45); letter-spacing: 0.03em; }
+        .hero-card-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 2rem 0; }
+        .hero-card-quote {
+            font-family: var(--font-display); font-style: italic;
+            color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.6; text-align: center;
+        }
+        .hero-card-quote span { display: block; font-family: var(--font-body); font-style: normal; font-size: 0.8rem; color: rgba(255,255,255,0.3); margin-top: 0.5rem; }
+        .hero-scroll {
+            position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+            color: rgba(255,255,255,0.35); font-size: 0.75rem; letter-spacing: 0.1em;
+            text-transform: uppercase; display: flex; flex-direction: column;
+            align-items: center; gap: 0.5rem; animation: pulse 2s ease-in-out infinite; z-index: 1;
+        }
+        .hero-scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(255,255,255,0.35), transparent); }
+
+        /* PHILOSOPHY */
+        .philosophy { padding: 7rem 2rem; background: var(--cream); position: relative; }
+        .philosophy::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--cream-dark), transparent); }
+        .section-inner { max-width: 1280px; margin: 0 auto; }
+        .section-label {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;
+            text-transform: uppercase; color: var(--maroon); margin-bottom: 1.5rem;
+        }
+        .section-label::before { content: ''; width: 30px; height: 2px; background: var(--maroon); }
+        .section-title {
+            font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 500; line-height: 1.15; letter-spacing: -0.02em;
+            color: var(--maroon-deep); margin-bottom: 1rem;
+        }
+        .section-subtitle { font-size: 1.1rem; color: var(--text-light); max-width: 600px; line-height: 1.7; margin-bottom: 3.5rem; }
+        .philosophy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .philosophy-card {
+            background: var(--white); border-radius: 20px; padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative; overflow: hidden; border: 1px solid var(--border);
+        }
+        .philosophy-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(107, 29, 42, 0.07); }
+        .philosophy-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: var(--maroon); transform: scaleX(0); transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .philosophy-card:hover::before { transform: scaleX(1); }
+        .philosophy-icon {
+            width: 56px; height: 56px; border-radius: 16px;
+            display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;
+        }
+        .philosophy-icon.maroon { background: rgba(107, 29, 42, 0.07); color: var(--maroon); }
+        .philosophy-icon.gold { background: rgba(201, 168, 76, 0.12); color: var(--gold); }
+        .philosophy-icon.dark { background: rgba(30, 26, 24, 0.06); color: var(--dark); }
+        .philosophy-card h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; color: var(--maroon-deep); margin-bottom: 0.75rem; }
+        .philosophy-card p { color: var(--text-light); font-size: 0.95rem; line-height: 1.7; }
+
+        /* SERVICES */
+        .services { padding: 7rem 2rem; background: var(--off-white); }
+        .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        .service-card {
+            background: var(--white); border-radius: 20px; padding: 2.5rem;
+            display: flex; gap: 1.5rem; align-items: flex-start;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid var(--border); cursor: default;
+        }
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(107, 29, 42, 0.06); border-color: rgba(107, 29, 42, 0.15); }
+        .service-number { font-family: var(--font-display); font-size: 2.5rem; font-weight: 300; color: var(--cream-dark); line-height: 1; flex-shrink: 0; width: 50px; }
+        .service-info h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; color: var(--maroon-deep); margin-bottom: 0.5rem; }
+        .service-info p { color: var(--text-light); font-size: 0.92rem; line-height: 1.7; }
+        .service-tag {
+            display: inline-block; margin-top: 0.75rem; font-size: 0.75rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.05em; color: var(--maroon);
+            background: rgba(107, 29, 42, 0.06); padding: 0.3rem 0.8rem; border-radius: 100px;
+        }
+
+        /* PROVIDERS */
+        .providers {
+            padding: 7rem 2rem;
+            background: linear-gradient(175deg, var(--maroon-deep) 0%, var(--maroon) 100%);
+            position: relative; overflow: hidden;
+        }
+        .providers::before {
+            content: ''; position: absolute; top: -50%; right: -20%; width: 60vw; height: 60vw; border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%); pointer-events: none;
+        }
+        .providers .section-label { color: var(--gold-light); }
+        .providers .section-label::before { background: var(--gold-light); }
+        .providers .section-title { color: var(--white); }
+        .providers .section-subtitle { color: rgba(255,255,255,0.55); }
+        .providers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; position: relative; z-index: 1; }
+        .provider-card {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px; padding: 2.5rem; text-align: center;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .provider-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-4px); }
+        .provider-avatar {
+            width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 1.5rem;
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--white);
+        }
+        .provider-avatar.av-1 { background: linear-gradient(135deg, var(--maroon-light), var(--maroon-subtle)); }
+        .provider-avatar.av-2 { background: linear-gradient(135deg, var(--gold), var(--gold-light)); }
+        .provider-avatar.av-3 { background: linear-gradient(135deg, var(--maroon-subtle), var(--gold)); }
+        .provider-card h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; color: var(--white); margin-bottom: 0.25rem; }
+        .provider-role { font-size: 0.85rem; color: var(--gold-light); font-weight: 500; margin-bottom: 1rem; }
+        .provider-card p { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+
+        /* ABOUT */
+        .about { padding: 7rem 2rem; background: var(--cream); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+        .about-content .section-title { margin-bottom: 1.5rem; }
+        .about-text { color: var(--text-light); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem; }
+        .about-text:last-of-type { margin-bottom: 2rem; }
+        .about-highlights { display: flex; flex-direction: column; gap: 1rem; }
+        .about-highlight { display: flex; align-items: center; gap: 1rem; }
+        .about-highlight-icon {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: rgba(107, 29, 42, 0.07); display: flex; align-items: center;
+            justify-content: center; flex-shrink: 0; color: var(--maroon);
+        }
+        .about-highlight span { font-weight: 500; color: var(--text); font-size: 0.95rem; }
+        .about-visual {
+            background: linear-gradient(150deg, var(--maroon-deep), var(--maroon));
+            border-radius: 24px; padding: 3rem; color: var(--white); position: relative; overflow: hidden;
+        }
+        .about-visual::before {
+            content: ''; position: absolute; top: -30%; right: -30%; width: 300px; height: 300px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.1), transparent 70%); pointer-events: none;
+        }
+        .about-visual-quote {
+            font-family: var(--font-display); font-size: 1.6rem; font-weight: 400;
+            line-height: 1.5; margin-bottom: 2rem; position: relative; z-index: 1; font-style: italic;
+        }
+        .about-visual-quote::before {
+            content: '\201C'; font-size: 5rem; color: var(--gold); position: absolute;
+            top: -2rem; left: -0.5rem; line-height: 1; opacity: 0.3;
+        }
+        .about-visual-stats {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; position: relative; z-index: 1;
+        }
+        .about-visual-stat-number { font-family: var(--font-display); font-size: 1.8rem; font-weight: 600; color: var(--gold-light); }
+        .about-visual-stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.45); margin-top: 0.25rem; }
+
+        /* LOCATION */
+        .location { padding: 7rem 2rem; background: var(--off-white); }
+        .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        .location-info { display: flex; flex-direction: column; gap: 2rem; }
+        .location-address { background: var(--white); border-radius: 20px; padding: 2rem; border: 1px solid var(--border); }
+        .location-address h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; color: var(--maroon-deep); margin-bottom: 1rem; }
+        .location-address p { color: var(--text-light); font-size: 0.95rem; line-height: 1.8; }
+        .location-address a { color: var(--maroon); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .location-address a:hover { color: var(--maroon-light); }
+        .location-hours { background: var(--white); border-radius: 20px; padding: 2rem; border: 1px solid var(--border); }
+        .location-hours h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; color: var(--maroon-deep); margin-bottom: 1rem; }
+        .hours-table { width: 100%; border-collapse: collapse; }
+        .hours-table tr { border-bottom: 1px solid rgba(0,0,0,0.04); }
+        .hours-table tr:last-child { border-bottom: none; }
+        .hours-table td { padding: 0.7rem 0; font-size: 0.92rem; }
+        .hours-table td:first-child { font-weight: 600; color: var(--text); width: 40%; }
+        .hours-table td:last-child { color: var(--text-light); text-align: right; }
+        .hours-table .today td { color: var(--maroon-deep); }
+        .hours-table .today td:last-child { color: var(--maroon); font-weight: 600; }
+        .location-map { border-radius: 20px; overflow: hidden; min-height: 400px; border: 1px solid var(--border); }
+        .location-map iframe { width: 100%; height: 100%; min-height: 400px; border: none; display: block; }
+
+        /* CTA / BOOKING */
+        .booking {
+            padding: 7rem 2rem;
+            background: var(--cream);
+            position: relative;
+        }
+        .booking-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+        }
+        .booking-left h2 {
+            font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 500; line-height: 1.15; letter-spacing: -0.02em;
+            color: var(--maroon-deep); margin-bottom: 1.25rem;
+        }
+        .booking-left > p {
+            font-size: 1.05rem; color: var(--text-light); line-height: 1.7; margin-bottom: 2.5rem;
+        }
+        .booking-contact-cards { display: flex; flex-direction: column; gap: 1rem; }
+        .booking-contact-card {
+            display: flex; align-items: center; gap: 1rem;
+            background: var(--white); border: 1px solid var(--border);
+            border-radius: 14px; padding: 1.25rem 1.5rem;
+            transition: all 0.3s; text-decoration: none; color: var(--text);
+        }
+        .booking-contact-card:hover {
+            transform: translateY(-2px); box-shadow: 0 8px 25px rgba(107,29,42,0.06);
+            border-color: rgba(107,29,42,0.15);
+        }
+        .booking-contact-icon {
+            width: 44px; height: 44px; border-radius: 12px;
+            background: rgba(107,29,42,0.07); color: var(--maroon);
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .booking-contact-label { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.15rem; }
+        .booking-contact-value { font-weight: 600; color: var(--maroon-deep); font-size: 1rem; }
+
+        /* Form card */
+        .booking-form-card {
+            background: var(--white); border: 1px solid var(--border);
+            border-radius: 24px; padding: 2.5rem; position: relative; overflow: hidden;
+        }
+        .booking-form-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, var(--maroon), var(--maroon-light), var(--gold));
+        }
+        .booking-form-title {
+            font-family: var(--font-display); font-size: 1.4rem; font-weight: 500;
+            color: var(--maroon-deep); margin-bottom: 0.4rem;
+        }
+        .booking-form-sub { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 2rem; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+        .form-row.single { grid-template-columns: 1fr; }
+        .form-row.triple { grid-template-columns: 1fr 1fr 1fr; }
+        .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+        .form-group label {
+            font-size: 0.82rem; font-weight: 600; color: var(--text);
+            letter-spacing: 0.02em;
+        }
+        .form-group label .required { color: var(--maroon-subtle); margin-left: 2px; }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            font-family: var(--font-body); font-size: 0.92rem; color: var(--text);
+            background: var(--cream); border: 1px solid var(--cream-dark);
+            border-radius: 10px; padding: 0.75rem 1rem;
+            transition: all 0.25s; outline: none; width: 100%;
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: var(--text-muted); }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--maroon); background: var(--white);
+            box-shadow: 0 0 0 3px rgba(107,29,42,0.08);
+        }
+        .form-group select {
+            appearance: none; -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%236b6560' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 1rem center;
+            padding-right: 2.5rem; cursor: pointer;
+        }
+        .form-group textarea { resize: vertical; min-height: 90px; }
+        .form-divider {
+            height: 1px; background: var(--cream-dark); margin: 1.5rem 0;
+        }
+        .form-section-label {
+            font-size: 0.78rem; font-weight: 600; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem;
+        }
+        .form-submit {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: var(--maroon); color: var(--white);
+            padding: 0.9rem 2rem; border-radius: 100px; border: none;
+            font-family: var(--font-body); font-weight: 700; font-size: 0.95rem;
+            cursor: pointer; transition: all 0.3s; margin-top: 0.5rem; width: 100%;
+            justify-content: center;
+        }
+        .form-submit:hover {
+            background: var(--maroon-light); transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(107,29,42,0.2);
+        }
+        .form-note {
+            font-size: 0.78rem; color: var(--text-muted); text-align: center;
+            margin-top: 1rem; line-height: 1.5;
+        }
+
+        /* Success state */
+        .form-success {
+            display: none; text-align: center; padding: 3rem 1.5rem;
+        }
+        .form-success.show { display: block; }
+        .form-success-icon {
+            width: 64px; height: 64px; border-radius: 50%;
+            background: rgba(107,29,42,0.08); color: var(--maroon);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1.5rem; font-size: 1.5rem;
+        }
+        .form-success h3 {
+            font-family: var(--font-display); font-size: 1.4rem; font-weight: 500;
+            color: var(--maroon-deep); margin-bottom: 0.5rem;
+        }
+        .form-success p { color: var(--text-light); font-size: 0.95rem; line-height: 1.7; }
+
+        @media (max-width: 768px) {
+            .booking-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .form-row.triple { grid-template-columns: 1fr 1fr 1fr; }
+            .booking-form-card { padding: 2rem 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            .form-row.triple { grid-template-columns: 1fr; }
+        }
+
+        /* FOOTER */
+        .footer { padding: 3rem 2rem; background: var(--dark); border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-inner {
+            max-width: 1280px; margin: 0 auto; display: flex; align-items: center;
+            justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+        }
+        .footer-left { color: rgba(255,255,255,0.35); font-size: 0.85rem; }
+        .footer-right { display: flex; gap: 2rem; }
+        .footer-right a { color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
+        .footer-right a:hover { color: rgba(255,255,255,0.65); }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0%, 100% { opacity: 0.35; } 50% { opacity: 0.7; } }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+            .hero-visual { max-width: 500px; }
+            .philosophy-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-hamburger { display: flex; }
+            .hero { min-height: auto; }
+            .hero-inner { padding: 7rem 1.5rem 4rem; }
+            .hero h1 { font-size: 2.4rem; }
+            .hero-actions { flex-direction: column; align-items: flex-start; }
+            .hero-stats { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+            .philosophy-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .providers-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .location-grid { grid-template-columns: 1fr; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .section-title { font-size: 2rem; }
+        }
+        @media (max-width: 480px) {
+            .hero-stat-number { font-size: 2rem; }
+            .hero-card { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <img src="https://images.squarespace-cdn.com/content/v1/68599326bfb19503734b6146/3b404a57-6bf1-47ee-a944-c37b6ff29713/Untitled+design+%285%29.jpg?format=300w" alt="Back Pain Center Wentzville">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#philosophy">Why Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#providers">Providers</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#contact" class="nav-cta">Book Now</a></li>
+            </ul>
+            <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav-overlay" id="mobileNav">
+        <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close">&times;</button>
+        <a href="#philosophy" onclick="closeMobileNav()">Why Us</a>
+        <a href="#services" onclick="closeMobileNav()">Services</a>
+        <a href="#providers" onclick="closeMobileNav()">Providers</a>
+        <a href="#about" onclick="closeMobileNav()">About</a>
+        <a href="#location" onclick="closeMobileNav()">Location</a>
+        <a href="#contact" onclick="closeMobileNav()">Book Now</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-grain"></div>
+        <div class="hero-inner">
+            <div class="hero-content">
+                <div class="hero-badge">Wentzville, MO</div>
+                <h1>Get back to living <em>without</em> the pain</h1>
+                <p class="hero-sub">Expert chiropractic care and rehabilitation tailored to your body. No cookie-cutter plans — just the right treatment to get you moving again.</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn-primary">
+                        Schedule Appointment
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="tel:6368561260" class="btn-secondary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        (636) 856-1260
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-number">3<span class="accent">+</span></div>
+                            <div class="hero-stat-label">Locations</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-number">All</div>
+                            <div class="hero-stat-label">Ages Welcome</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-number">0</div>
+                            <div class="hero-stat-label">Drugs or Surgery</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-number">5<span class="accent">x</span></div>
+                            <div class="hero-stat-label">Days a Week</div>
+                        </div>
+                    </div>
+                    <div class="hero-card-divider"></div>
+                    <div class="hero-card-quote">
+                        We find the root cause, fix it, and keep you moving.
+                        <span>— Our Promise</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            Scroll
+            <div class="hero-scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section class="philosophy" id="philosophy">
+        <div class="section-inner">
+            <div class="section-label">Our Approach</div>
+            <h2 class="section-title fade-in">Care that actually makes<br>a difference</h2>
+            <p class="section-subtitle fade-in">We don't sign you up for extended, pricey care plans. We diagnose accurately, treat effectively, and get you back to your life.</p>
+            <div class="philosophy-grid">
+                <div class="philosophy-card fade-in">
+                    <div class="philosophy-icon maroon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <h3>Accurate Diagnosis First</h3>
+                    <p>Every patient starts with a thorough evaluation. We identify the real source of your pain before any treatment begins — no guesswork, no assumptions.</p>
+                </div>
+                <div class="philosophy-card fade-in">
+                    <div class="philosophy-icon gold">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                    </div>
+                    <h3>Honest Recommendations</h3>
+                    <p>If we believe another specialty could better address your needs, we'll refer you out. We're here to help you get better — not to keep you coming back unnecessarily.</p>
+                </div>
+                <div class="philosophy-card fade-in">
+                    <div class="philosophy-icon dark">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>Long-Term Prevention</h3>
+                    <p>Getting out of pain is just the start. We work to improve your movement patterns, build stability, and prevent future problems from coming back.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="section-inner">
+            <div class="section-label">What We Offer</div>
+            <h2 class="section-title fade-in">Comprehensive care<br>under one roof</h2>
+            <p class="section-subtitle fade-in">Evidence-based treatments to get you from discomfort to wellness — and keep you there.</p>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-number">01</div>
+                    <div class="service-info">
+                        <h3>Chiropractic Care</h3>
+                        <p>Targeted spinal adjustments and evidence-based techniques to address pain at its source, restore alignment, and improve nervous system function.</p>
+                        <span class="service-tag">Core Service</span>
+                    </div>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-number">02</div>
+                    <div class="service-info">
+                        <h3>Therapeutic Rehabilitation</h3>
+                        <p>Customized rehab programs that retrain movement patterns, build muscular stability, and reduce your reliance on ongoing treatment.</p>
+                        <span class="service-tag">Rehab</span>
+                    </div>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-number">03</div>
+                    <div class="service-info">
+                        <h3>Massage Therapy</h3>
+                        <p>Therapeutic massage that complements chiropractic care, relieving muscle tension, improving circulation, and accelerating recovery.</p>
+                        <span class="service-tag">Wellness</span>
+                    </div>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-number">04</div>
+                    <div class="service-info">
+                        <h3>Sports Chiropractic</h3>
+                        <p>Specialized care for athletes of all levels — from weekend warriors to competitive competitors — keeping you performing at your peak.</p>
+                        <span class="service-tag">Performance</span>
+                    </div>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-number">05</div>
+                    <div class="service-info">
+                        <h3>Pregnancy Chiropractic</h3>
+                        <p>Gentle, safe adjustments for expectant mothers to ease pregnancy-related discomfort and support a smoother delivery experience.</p>
+                        <span class="service-tag">Prenatal</span>
+                    </div>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-number">06</div>
+                    <div class="service-info">
+                        <h3>Manual Therapy</h3>
+                        <p>Hands-on techniques including soft tissue mobilization and myofascial release to restore mobility and reduce pain in muscles and joints.</p>
+                        <span class="service-tag">Hands-On</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROVIDERS -->
+    <section class="providers" id="providers">
+        <div class="section-inner">
+            <div class="section-label">Our Team</div>
+            <h2 class="section-title fade-in">Providers who care<br>about your outcome</h2>
+            <p class="section-subtitle fade-in">A team of dedicated professionals bringing diverse expertise and a personalized approach to every patient.</p>
+            <div class="providers-grid">
+                <div class="provider-card fade-in">
+                    <div class="provider-avatar av-1">JB</div>
+                    <h3>Dr. Josh Baird</h3>
+                    <p class="provider-role">Chiropractor</p>
+                    <p>Combines chiropractic and rehabilitation expertise with an individualized approach — focused on eliminating pain at its root cause, not just managing symptoms.</p>
+                </div>
+                <div class="provider-card fade-in">
+                    <div class="provider-avatar av-2">MM</div>
+                    <h3>Dr. Mary Momper</h3>
+                    <p class="provider-role">Chiropractor</p>
+                    <p>With a background in Exercise Science and Biomechanics from Ball State University, Dr. Momper brings a movement-first perspective to chiropractic care.</p>
+                </div>
+                <div class="provider-card fade-in">
+                    <div class="provider-avatar av-3">BK</div>
+                    <h3>Brandy Keffer</h3>
+                    <p class="provider-role">Massage Therapist</p>
+                    <p>Skilled therapeutic massage that integrates seamlessly with our chiropractic care, providing a comprehensive path to pain relief and recovery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="section-inner">
+            <div class="about-grid">
+                <div class="about-content">
+                    <div class="section-label">About Us</div>
+                    <h2 class="section-title fade-in">Built for Wentzville.<br>Here for everyone.</h2>
+                    <p class="about-text fade-in">At Back Pain Center Wentzville, we provide exceptional chiropractic and rehabilitation services tailored to each patient's unique needs. Our practice places an extreme emphasis on properly diagnosing patients and using the best techniques to get you out of pain, enhance function, and support your long-term health.</p>
+                    <p class="about-text fade-in">We're proud to welcome patients of all walks of life — from children to seniors and everyone in between. Everyone's individual needs are different, and our team will find the best strategy for you.</p>
+                    <div class="about-highlights fade-in">
+                        <div class="about-highlight">
+                            <div class="about-highlight-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <span>No extended, pricey care plans</span>
+                        </div>
+                        <div class="about-highlight">
+                            <div class="about-highlight-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <span>Drug-free, surgery-free approach</span>
+                        </div>
+                        <div class="about-highlight">
+                            <div class="about-highlight-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <span>Patients of all ages welcome</span>
+                        </div>
+                        <div class="about-highlight">
+                            <div class="about-highlight-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <span>Part of the Back Pain Center family (3 locations)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual fade-in">
+                    <div class="about-visual-quote">
+                        After you're feeling better, our goal is to keep you feeling better — working to prevent future issues that may occur.
+                    </div>
+                    <div class="about-visual-stats">
+                        <div>
+                            <div class="about-visual-stat-number">3</div>
+                            <div class="about-visual-stat-label">Locations in MO</div>
+                        </div>
+                        <div>
+                            <div class="about-visual-stat-number">5</div>
+                            <div class="about-visual-stat-label">Days a Week</div>
+                        </div>
+                        <div>
+                            <div class="about-visual-stat-number">All</div>
+                            <div class="about-visual-stat-label">Ages Treated</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION & HOURS -->
+    <section class="location" id="location">
+        <div class="section-inner">
+            <div class="section-label">Visit Us</div>
+            <h2 class="section-title fade-in">Conveniently located in<br>Wentzville</h2>
+            <p class="section-subtitle fade-in" style="margin-bottom: 3rem;">On Main Plaza Drive — easy to find, plenty of parking.</p>
+            <div class="location-grid">
+                <div class="location-info">
+                    <div class="location-address fade-in">
+                        <h3>Address</h3>
+                        <p>905 Main Plaza Drive<br>Wentzville, MO 63385</p>
+                        <br>
+                        <p><strong>Phone:</strong> <a href="tel:6368561260">(636) 856-1260</a><br>
+                        <strong>Email:</strong> <a href="mailto:WentzvilleBPC@gmail.com">WentzvilleBPC@gmail.com</a></p>
+                    </div>
+                    <div class="location-hours fade-in">
+                        <h3>Office Hours</h3>
+                        <table class="hours-table">
+                            <tr><td>Monday</td><td>9:00 AM – 6:00 PM</td></tr>
+                            <tr><td>Tuesday</td><td>8:00 AM – 5:00 PM</td></tr>
+                            <tr><td>Wednesday</td><td>9:00 AM – 6:00 PM</td></tr>
+                            <tr><td>Thursday</td><td>8:00 AM – 5:00 PM</td></tr>
+                            <tr><td>Friday</td><td>8:00 AM – 5:00 PM</td></tr>
+                            <tr><td>Saturday</td><td>Closed</td></tr>
+                            <tr><td>Sunday</td><td>Closed</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="location-map fade-in">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3107.8!2d-90.8523!3d38.8114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87DF3F0A0A0A0A0A%3A0x0!2s905+Main+Plaza+Dr%2C+Wentzville%2C+MO+63385!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                        title="Back Pain Center Wentzville location"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOK APPOINTMENT -->
+    <section class="booking" id="contact">
+        <div class="section-inner">
+            <div class="booking-grid">
+                <div class="booking-left fade-in">
+                    <div class="section-label">Schedule Today</div>
+                    <h2>Your path to feeling<br>better starts here</h2>
+                    <p>Fill out the form to request an appointment and we'll be in touch shortly. Prefer to reach out directly? Give us a call or send an email — no pressure, no gimmicks.</p>
+
+                    <div class="booking-contact-cards">
+                        <a href="tel:6368561260" class="booking-contact-card">
+                            <div class="booking-contact-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                            </div>
+                            <div>
+                                <div class="booking-contact-label">Phone</div>
+                                <div class="booking-contact-value">(636) 856-1260</div>
+                            </div>
+                        </a>
+                        <a href="mailto:WentzvilleBPC@gmail.com" class="booking-contact-card">
+                            <div class="booking-contact-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </div>
+                            <div>
+                                <div class="booking-contact-label">Email</div>
+                                <div class="booking-contact-value">WentzvilleBPC@gmail.com</div>
+                            </div>
+                        </a>
+                        <a href="https://www.google.com/maps/place/905+Main+Plaza+Dr,+Wentzville,+MO+63385" target="_blank" rel="noopener" class="booking-contact-card">
+                            <div class="booking-contact-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                            <div>
+                                <div class="booking-contact-label">Location</div>
+                                <div class="booking-contact-value">905 Main Plaza Dr, Wentzville</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="booking-form-card fade-in">
+                    <div id="formContent">
+                        <h3 class="booking-form-title">Request an Appointment</h3>
+                        <p class="booking-form-sub">Pending confirmation — we'll reach out to finalize your time.</p>
+
+                        <div class="form-section-label">Patient Information</div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Patient Type <span class="required">*</span></label>
+                                <select id="patientType" required>
+                                    <option value="" disabled selected>Select one</option>
+                                    <option value="new">New Patient</option>
+                                    <option value="current">Current Patient</option>
+                                    <option value="returning">Returning Patient</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Preferred Contact <span class="required">*</span></label>
+                                <select id="contactMethod" required>
+                                    <option value="" disabled selected>Select one</option>
+                                    <option value="phone">Phone</option>
+                                    <option value="email">Email</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name <span class="required">*</span></label>
+                                <input type="text" id="firstName" placeholder="First name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name <span class="required">*</span></label>
+                                <input type="text" id="lastName" placeholder="Last name" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Email Address <span class="required">*</span></label>
+                                <input type="email" id="email" placeholder="you@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number <span class="required">*</span></label>
+                                <input type="tel" id="phone" placeholder="(636) 000-0000" required>
+                            </div>
+                        </div>
+
+                        <div class="form-divider"></div>
+                        <div class="form-section-label">Preferred Appointment Time</div>
+
+                        <div class="form-row triple">
+                            <div class="form-group">
+                                <label>Date</label>
+                                <input type="date" id="prefDate">
+                            </div>
+                            <div class="form-group">
+                                <label>Time</label>
+                                <select id="prefTime">
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="8:00 AM">8:00 AM</option>
+                                    <option value="8:30 AM">8:30 AM</option>
+                                    <option value="9:00 AM">9:00 AM</option>
+                                    <option value="9:30 AM">9:30 AM</option>
+                                    <option value="10:00 AM">10:00 AM</option>
+                                    <option value="10:30 AM">10:30 AM</option>
+                                    <option value="11:00 AM">11:00 AM</option>
+                                    <option value="11:30 AM">11:30 AM</option>
+                                    <option value="12:00 PM">12:00 PM</option>
+                                    <option value="12:30 PM">12:30 PM</option>
+                                    <option value="1:00 PM">1:00 PM</option>
+                                    <option value="1:30 PM">1:30 PM</option>
+                                    <option value="2:00 PM">2:00 PM</option>
+                                    <option value="2:30 PM">2:30 PM</option>
+                                    <option value="3:00 PM">3:00 PM</option>
+                                    <option value="3:30 PM">3:30 PM</option>
+                                    <option value="4:00 PM">4:00 PM</option>
+                                    <option value="4:30 PM">4:30 PM</option>
+                                    <option value="5:00 PM">5:00 PM</option>
+                                    <option value="5:30 PM">5:30 PM</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Provider</label>
+                                <select id="prefProvider">
+                                    <option value="" disabled selected>Any</option>
+                                    <option value="Dr. Josh Baird">Dr. Josh Baird</option>
+                                    <option value="Dr. Mary Momper">Dr. Mary Momper</option>
+                                    <option value="Brandy Keffer">Brandy Keffer (MT)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-divider"></div>
+
+                        <div class="form-row single">
+                            <div class="form-group">
+                                <label>Comments or Questions</label>
+                                <textarea id="comments" placeholder="Tell us a little about what's going on, or any questions you may have..."></textarea>
+                            </div>
+                        </div>
+
+                        <button class="form-submit" id="submitBtn" onclick="handleSubmit()">
+                            Request Appointment
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                        <p class="form-note">This is a request only — your appointment is not confirmed until we contact you.</p>
+                    </div>
+
+                    <div class="form-success" id="formSuccess">
+                        <div class="form-success-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <h3>Request Sent!</h3>
+                        <p>Thank you — we've received your appointment request and will be in touch shortly to confirm your time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-left">&copy; 2025 Back Pain Center Wentzville. All rights reserved.</div>
+            <div class="footer-right">
+                <a href="http://www.facebook.com/pages/Back-Pain-Center/295947317667" target="_blank" rel="noopener">Facebook</a>
+                <a href="http://www.yelp.com/biz/back-pain-center-o-fallon" target="_blank" rel="noopener">Yelp</a>
+                <a href="tel:6368561260">(636) 856-1260</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const siblings = entry.target.parentElement.querySelectorAll('.fade-in');
+                    const index = Array.from(siblings).indexOf(entry.target);
+                    entry.target.style.transitionDelay = index * 0.1 + 's';
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const today = days[new Date().getDay()];
+        document.querySelectorAll('.hours-table tr').forEach(row => {
+            if (row.querySelector('td') && row.querySelector('td').textContent.trim() === today) row.classList.add('today');
+        });
+
+        const hamburger = document.getElementById('navHamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileNavClose = document.getElementById('mobileNavClose');
+        hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+        mobileNavClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+        function closeMobileNav() { mobileNav.classList.remove('open'); }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Phone number formatting
+        const phoneInput = document.getElementById('phone');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', function(e) {
+                let val = e.target.value.replace(/\D/g, '');
+                if (val.length > 10) val = val.slice(0, 10);
+                if (val.length >= 6) {
+                    val = '(' + val.slice(0,3) + ') ' + val.slice(3,6) + '-' + val.slice(6);
+                } else if (val.length >= 3) {
+                    val = '(' + val.slice(0,3) + ') ' + val.slice(3);
+                }
+                e.target.value = val;
+            });
+        }
+
+        // Set min date to today
+        const dateInput = document.getElementById('prefDate');
+        if (dateInput) {
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const dd = String(today.getDate()).padStart(2, '0');
+            dateInput.setAttribute('min', yyyy + '-' + mm + '-' + dd);
+        }
+
+        // Form submission (placeholder — wire up backend later)
+        function handleSubmit() {
+            const required = ['patientType', 'contactMethod', 'firstName', 'lastName', 'email', 'phone'];
+            let valid = true;
+
+            required.forEach(id => {
+                const el = document.getElementById(id);
+                if (!el.value || el.value === '') {
+                    el.style.borderColor = 'var(--maroon-subtle)';
+                    el.style.background = 'rgba(107,29,42,0.03)';
+                    valid = false;
+                } else {
+                    el.style.borderColor = '';
+                    el.style.background = '';
+                }
+            });
+
+            if (!valid) return;
+
+            // Collect form data (ready for backend integration)
+            const formData = {
+                patientType: document.getElementById('patientType').value,
+                contactMethod: document.getElementById('contactMethod').value,
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                preferredDate: document.getElementById('prefDate').value,
+                preferredTime: document.getElementById('prefTime').value,
+                preferredProvider: document.getElementById('prefProvider').value,
+                comments: document.getElementById('comments').value,
+            };
+
+            console.log('Appointment request:', formData);
+
+            // TODO: Replace with actual API call
+            // fetch('/api/appointments', { method: 'POST', body: JSON.stringify(formData) })
+
+            // Show success state
+            document.getElementById('formContent').style.display = 'none';
+            document.getElementById('formSuccess').classList.add('show');
+        }
+    </script>
+</body>
+</html>
