@@ -62,7 +62,8 @@
         .nav-logo img {
             height: 52px; width: auto;
             transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            filter: brightness(0) invert(1);
+            filter: invert(1);
+            mix-blend-mode: screen;
         }
         .nav.scrolled .nav-logo img { height: 42px; }
         .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
@@ -102,6 +103,11 @@
             min-height: 100vh;
             background: linear-gradient(165deg, var(--maroon-deep) 0%, var(--maroon) 50%, var(--maroon-light) 100%);
             display: flex; align-items: center; position: relative; overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; inset: 0; z-index: 0;
+            background: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            opacity: 0.12;
         }
         .hero::before {
             content: ''; position: absolute; top: -30%; right: -15%;
@@ -297,24 +303,57 @@
         }
         .about-highlight span { font-weight: 500; color: var(--text); font-size: 0.95rem; }
         .about-visual {
-            background: linear-gradient(150deg, var(--maroon-deep), var(--maroon));
-            border-radius: 24px; padding: 3rem; color: var(--white); position: relative; overflow: hidden;
+            border-radius: 24px; position: relative; overflow: hidden; min-height: 500px;
         }
-        .about-visual::before {
-            content: ''; position: absolute; top: -30%; right: -30%; width: 300px; height: 300px; border-radius: 50%;
-            background: radial-gradient(circle, rgba(201, 168, 76, 0.1), transparent 70%); pointer-events: none;
+        .about-visual-img {
+            position: absolute; inset: 0;
+            background: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+        }
+        .about-visual-overlay {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, var(--maroon-deep) 0%, rgba(78,21,32,0.9) 60%, transparent 100%);
+            padding: 3rem 2.5rem 2.5rem; color: var(--white);
         }
         .about-visual-quote {
-            font-family: var(--font-display); font-size: 1.6rem; font-weight: 400;
-            line-height: 1.5; margin-bottom: 2rem; position: relative; z-index: 1; font-style: italic;
+            font-family: var(--font-display); font-size: 1.3rem; font-weight: 400;
+            line-height: 1.5; margin-bottom: 1.5rem; position: relative; z-index: 1; font-style: italic;
         }
         .about-visual-quote::before {
-            content: '\201C'; font-size: 5rem; color: var(--gold); position: absolute;
-            top: -2rem; left: -0.5rem; line-height: 1; opacity: 0.3;
+            content: '\201C'; font-size: 4rem; color: var(--gold); position: absolute;
+            top: -1.5rem; left: -0.5rem; line-height: 1; opacity: 0.4;
         }
         .about-visual-stats {
             display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; position: relative; z-index: 1;
+            border-top: 1px solid rgba(255,255,255,0.15); padding-top: 1.5rem; position: relative; z-index: 1;
+        }
+
+        /* Image break */
+        .img-break {
+            height: 360px; position: relative; overflow: hidden;
+        }
+        .img-break-inner {
+            position: absolute; inset: 0;
+            background-attachment: fixed; background-size: cover; background-position: center;
+        }
+        .img-break-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(78,21,32,0.85), rgba(107,29,42,0.7));
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 2rem;
+        }
+        .img-break-text {
+            font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.4rem);
+            color: var(--white); font-weight: 400; font-style: italic; max-width: 700px;
+            line-height: 1.4;
+        }
+        .img-break-text span {
+            display: block; font-family: var(--font-body); font-style: normal;
+            font-size: 0.85rem; color: var(--gold-light); margin-top: 0.75rem;
+            letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600;
+        }
+        @media (max-width: 768px) {
+            .img-break-inner { background-attachment: scroll; }
+            .img-break { height: 280px; }
         }
         .about-visual-stat-number { font-family: var(--font-display); font-size: 1.8rem; font-weight: 600; color: var(--gold-light); }
         .about-visual-stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.45); margin-top: 0.25rem; }
@@ -376,6 +415,18 @@
         }
         .booking-contact-label { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.15rem; }
         .booking-contact-value { font-weight: 600; color: var(--maroon-deep); font-size: 1rem; }
+        .booking-contact-bottom {
+            grid-column: 1 / -1;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .booking-contact-bottom .booking-contact-card {
+            flex-direction: column; text-align: center; padding: 1.5rem;
+        }
+        .booking-contact-bottom .booking-contact-value { font-size: 0.92rem; }
+        @media (max-width: 768px) {
+            .booking-contact-bottom { grid-template-columns: 1fr; }
+        }
 
         /* Form card */
         .booking-form-card {
@@ -469,6 +520,19 @@
             .form-row { grid-template-columns: 1fr; }
             .form-row.triple { grid-template-columns: 1fr 1fr 1fr; }
             .booking-form-card { padding: 2rem 1.5rem; }
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                font-size: 16px; /* prevents iOS zoom */
+                padding: 0.85rem 1rem;
+            }
+            .form-group select {
+                -webkit-appearance: menulist-button;
+                appearance: menulist-button;
+                background-image: none;
+                padding-right: 1rem;
+                min-height: 50px;
+            }
         }
         @media (max-width: 480px) {
             .form-row.triple { grid-template-columns: 1fr; }
@@ -554,6 +618,7 @@
 
     <!-- HERO -->
     <section class="hero" id="hero">
+        <div class="hero-bg"></div>
         <div class="hero-grain"></div>
         <div class="hero-inner">
             <div class="hero-content">
@@ -725,6 +790,17 @@
         </div>
     </section>
 
+    <!-- IMAGE BREAK -->
+    <div class="img-break">
+        <div class="img-break-inner" style="background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="img-break-overlay">
+            <div class="img-break-text">
+                Your health journey becomes our priority the moment you walk through our doors.
+                <span>Back Pain Center Wentzville</span>
+            </div>
+        </div>
+    </div>
+
     <!-- ABOUT -->
     <section class="about" id="about">
         <div class="section-inner">
@@ -754,21 +830,24 @@
                     </div>
                 </div>
                 <div class="about-visual fade-in">
-                    <div class="about-visual-quote">
-                        After you're feeling better, our goal is to keep you feeling better — working to prevent future issues that may occur.
-                    </div>
-                    <div class="about-visual-stats">
-                        <div>
-                            <div class="about-visual-stat-number">15+</div>
-                            <div class="about-visual-stat-label">Years Serving MO</div>
+                    <div class="about-visual-img"></div>
+                    <div class="about-visual-overlay">
+                        <div class="about-visual-quote">
+                            After you're feeling better, our goal is to keep you feeling better — working to prevent future issues.
                         </div>
-                        <div>
-                            <div class="about-visual-stat-number">5</div>
-                            <div class="about-visual-stat-label">Days a Week</div>
-                        </div>
-                        <div>
-                            <div class="about-visual-stat-number">All</div>
-                            <div class="about-visual-stat-label">Ages Treated</div>
+                        <div class="about-visual-stats">
+                            <div>
+                                <div class="about-visual-stat-number">15+</div>
+                                <div class="about-visual-stat-label">Years Serving MO</div>
+                            </div>
+                            <div>
+                                <div class="about-visual-stat-number">5</div>
+                                <div class="about-visual-stat-label">Days a Week</div>
+                            </div>
+                            <div>
+                                <div class="about-visual-stat-number">All</div>
+                                <div class="about-visual-stat-label">Ages Treated</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -820,36 +899,9 @@
                 <div class="booking-left fade-in">
                     <div class="section-label">Schedule Today</div>
                     <h2>Your path to feeling<br>better starts here</h2>
-                    <p>Fill out the form to request an appointment and we'll be in touch shortly. Prefer to reach out directly? Give us a call or send an email — no pressure, no gimmicks.</p>
-
-                    <div class="booking-contact-cards">
-                        <a href="tel:6368561260" class="booking-contact-card">
-                            <div class="booking-contact-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                            </div>
-                            <div>
-                                <div class="booking-contact-label">Phone</div>
-                                <div class="booking-contact-value">(636) 856-1260</div>
-                            </div>
-                        </a>
-                        <a href="mailto:WentzvilleBPC@gmail.com" class="booking-contact-card">
-                            <div class="booking-contact-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                            </div>
-                            <div>
-                                <div class="booking-contact-label">Email</div>
-                                <div class="booking-contact-value">WentzvilleBPC@gmail.com</div>
-                            </div>
-                        </a>
-                        <a href="https://www.google.com/maps/place/905+Main+Plaza+Dr,+Wentzville,+MO+63385" target="_blank" rel="noopener" class="booking-contact-card">
-                            <div class="booking-contact-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                            </div>
-                            <div>
-                                <div class="booking-contact-label">Location</div>
-                                <div class="booking-contact-value">905 Main Plaza Dr, Wentzville</div>
-                            </div>
-                        </a>
+                    <p>Fill out the form to request an appointment and we'll be in touch shortly. No pressure, no gimmicks — just care that gets results.</p>
+                    <div style="margin-top: 1rem;">
+                        <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=600&q=80" alt="Welcoming clinic" style="width: 100%; border-radius: 16px; aspect-ratio: 4/3; object-fit: cover;">
                     </div>
                 </div>
 
@@ -970,6 +1022,37 @@
                         <h3>Request Sent!</h3>
                         <p>Thank you — we've received your appointment request and will be in touch shortly to confirm your time.</p>
                     </div>
+                </div>
+
+                <!-- Contact cards below the form -->
+                <div class="booking-contact-bottom fade-in">
+                    <a href="tel:6368561260" class="booking-contact-card">
+                        <div class="booking-contact-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <div class="booking-contact-label">Phone</div>
+                            <div class="booking-contact-value">(636) 856-1260</div>
+                        </div>
+                    </a>
+                    <a href="mailto:WentzvilleBPC@gmail.com" class="booking-contact-card">
+                        <div class="booking-contact-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div>
+                            <div class="booking-contact-label">Email</div>
+                            <div class="booking-contact-value">WentzvilleBPC@gmail.com</div>
+                        </div>
+                    </a>
+                    <a href="https://www.google.com/maps/place/905+Main+Plaza+Dr,+Wentzville,+MO+63385" target="_blank" rel="noopener" class="booking-contact-card">
+                        <div class="booking-contact-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <div class="booking-contact-label">Location</div>
+                            <div class="booking-contact-value">905 Main Plaza Dr, Wentzville</div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
