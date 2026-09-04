@@ -10,10 +10,8 @@
      Title format: [Service] in [City], [State] | [Brand]
      Keep under ~60 chars so it isn't truncated in results.
      ============================================================ -->
-<title>Chiropractor in Wentzville, MO | Back Pain Center</title>
+<title>Wentzville Chiropractor for Back Pain | Dr. Josh Baird</title>
 <meta name="description" content="Chiropractic care and rehab in Wentzville, MO. Accurate diagnosis first, no long-term care plans. Dr. Josh Baird and Dr. Mary Momper. Call (636) 856-1260.">
-<link rel="canonical" href="https://www.backpaincenterwentzville.com/">
-
 <meta name="geo.region" content="US-MO">
 <meta name="geo.placename" content="Wentzville, Missouri">
 <meta name="geo.position" content="38.8114;-90.8529">
@@ -565,14 +563,21 @@ footer p{line-height:1.7}
 .slot figcaption .stars{color:#F4B400;letter-spacing:.04em;font-weight:700}
 
 /* ---------- review wall ---------- */
-.revwall{columns:3;column-gap:1.15rem;margin-top:1.9rem}
-@media(max-width:1000px){.revwall{columns:2}}
-@media(max-width:640px){.revwall{columns:1}}
-.revwall > *{break-inside:avoid;margin-bottom:1.25rem;display:block}
+.revwall{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1.15rem;
+  margin-top:1.9rem;
+  align-items:stretch;
+}
+@media(max-width:1000px){.revwall{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.revwall{grid-template-columns:minmax(0,1fr)}}
+.revwall > *{min-width:0;margin:0}
 
 .scorecard{
   background:var(--brand-deep);color:#fff;
   border-radius:var(--r-lg);padding:1.75rem;
+  height:100%;box-sizing:border-box;
 }
 .scorecard .score{
   font-family:var(--sans);font-weight:700;
@@ -601,8 +606,10 @@ footer p{line-height:1.7}
 .quote figcaption::before{content:"";width:.4rem;height:.4rem;border-radius:50%;background:var(--brand);flex:none}
 
 .slot{
-  border:1.5px dashed var(--line);border-radius:var(--r-lg);
-  padding:1.6rem;background:transparent;
+  border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:1.6rem;background:var(--white);
+  height:100%;box-sizing:border-box;
+  overflow-wrap:anywhere;
 }
 .slot .slot-tag{
   font-family:var(--sans);font-size:.75rem;font-weight:700;
@@ -636,7 +643,6 @@ footer p{line-height:1.7}
     </a>
     <nav class="nav" aria-label="Main">
       <a class="nav-hide" href="#treat">What we treat</a>
-      <a class="nav-hide" href="#first-visit">First visit</a>
       <a class="nav-hide" href="#team">Our doctors</a>
       <a class="nav-hide" href="#cost">Cost &amp; insurance</a>
       <a class="nav-tel" href="tel:+16368561260">(636) 856-1260</a>
@@ -1097,95 +1103,30 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 
 <!--
 ================================================================
-BEFORE THIS GOES LIVE
+BEFORE THIS GOES LIVE / STAGING NOTES
 ================================================================
-0. PLACEHOLDER CONTENT still on this page: three review slots in
-   #reviews, the insurance carrier list and self-pay pricing in
-   #cost. All are marked inline. (This note replaced the draft
-   banner that used to sit at the top of the page.)
+0. STAGING: meta robots noindex,nofollow + robots.txt Disallow are on.
+   Soft-launch later: flip noindex off, set canonicals to production
+   URLs, then point domain/DNS. Do not set production canonicals while
+   those URLs are not live on Squarespace.
 
-1. IMAGES. The logo and Dr. Baird's headshot are embedded directly in
-   this file as base64, so nothing can break them. The same files are
-   also saved in assets/ if you would rather reference them normally:
+1. IMAGES. Logo and headshots are embedded as base64 in this file.
+   Brandy Keffer still uses a BK monogram until a real headshot exists.
 
-     assets/logo.png                  transparent background
-     assets/logo-header.png           small, sized for the header
-     assets/office-reception.jpg      1240x884, hero
-     assets/dr-josh-baird.jpg         1000x1249, portrait crop (unused now)
-     assets/dr-josh-baird-square.jpg  900x900, provider card crop
-     assets/dr-mary-momper.jpg        1000x1250, hero crop
-     assets/dr-mary-momper-square.jpg 900x900, provider card crop
+2. REVIEWS. Google review quotes on this page are real patient words
+   already in the #reviews wall. Do not invent replacements.
 
-   Do NOT go back to the Squarespace CDN URLs - it returns 403 to
-   other domains, which is why those images broke during review.
+3. INSURANCE + PRICING. Keep the bracketed [Josh …] placeholders in
+   #cost until Josh fills actual carriers and self-pay pricing.
+   Naming carriers is worth long-tail search traffic.
 
-   Dr. Momper's source photo was a phone snapshot in front of the
-   clinic signage. It was segmented, composited onto the same warm
-   background as Dr. Baird's, and the red signage colour caught in her
-   hair was healed out, so the two now match. It is still a phone photo
-   underneath - fine at the sizes used here, softer than his if blown up.
+4. FORM ENDPOINT. Replace REPLACE_WITH_FORM_ID when ready (Formspree /
+   Netlify Forms / Basin). Test that submissions hit a watched inbox.
 
-   Still needed: a real headshot for Brandy Keffer, who is showing a
-   monogram tile. Worth booking one session and shooting all three
-   together so the set finally matches.
+5. PAUSED HERO PANEL. "Who can see you soonest" still on hold pending
+   Josh's approval.
 
-7. FORM ENDPOINT. Replace REPLACE_WITH_FORM_ID in the form action
-   with a real Formspree (or Netlify Forms / Basin) ID. Free tiers
-   cover this volume. Then submit a test request and confirm it
-   lands in an inbox someone actually checks. Given ~60% of calls
-   go unanswered, this form is the primary way patients reach the
-   practice — it cannot be the thing that silently fails again.
-
-2. REVIEWS. Three placeholder slots in #reviews need real Google
-   review text. Do not write these; copy the patients' own words.
-
-3. INSURANCE + PRICING. Two bracketed placeholders in #cost.
-   Listing carriers by name is worth real long-tail search traffic.
-
-4. PAUSED HERO PANEL. The "Who can see you soonest" panel is on
-   hold pending Josh's approval. It listed Dr. Momper first with an
-   open-availability marker to steer new patients toward her empty
-   calendar. To restore it, swap this back in for the .startcard
-   aside in the hero, and restore the .soonest CSS block:
-
-   NOTE: the hero is now a single column, so restoring this means
-   putting the two-column grid back on .hero .wrap as well.
-
-   <aside class="soonest" aria-labelledby="soonest-h">
-     <h2 id="soonest-h">Who can see you soonest</h2>
-     <div class="avail-row"><span class="dot" aria-hidden="true"></span>
-       <span><span class="who">Dr. Mary Momper</span>
-       <span class="when">Usually has openings this week</span></span></div>
-     <div class="avail-row"><span class="dot busy" aria-hidden="true"></span>
-       <span><span class="who">Dr. Josh Baird</span>
-       <span class="when">Books further out - ask about cancellations</span></span></div>
-     <a class="btn" href="#book">Request the soonest opening</a>
-     <p class="fine">Send a request any time.</p>
-   </aside>
-
-   Only publish that panel while the availability claim is true.
-   Its rows were renamed to .avail-row because .slot is now used by
-   the review wall.
-
-5. THE DOMAIN PROBLEM. ofallonchiropractor.com/about-us-wentzville
-   currently outranks this practice's own domain for its own name.
-   Fix that alongside launch, or this page competes with it:
-   - point that page's canonical at backpaincenterwentzville.com,
-     or 301 it here
-   - make sure Google Business Profile links to THIS domain
-   - correct the Yelp listing, which points at the O'Fallon site
-   - submit this URL in Search Console and request indexing
-
-6. NEXT PAGES. This homepage is the hub. The highest-value pages
-   to add next, in order:
-     /sciatica-wentzville
-     /back-pain-wentzville
-     /auto-accident-injury-wentzville
-     /prenatal-chiropractor-wentzville
-     /massage-therapy-wentzville
-   Each should be a real page answering that one question, linked
-   from the "What we treat" grid. That's how a small practice
-   outranks a chain — depth on specific local intent.
+Live Squarespace Home stays untouched until explicit cutover.
 ================================================================
 -->
 </body>
