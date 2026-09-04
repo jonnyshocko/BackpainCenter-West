@@ -306,18 +306,27 @@ h1{font-size:clamp(1.9rem,4.4vw,2.9rem);max-width:17ch}
 .steps{counter-reset:s;margin-top:1.9rem;display:grid;gap:0}
 .step{
   counter-increment:s;display:grid;
-  grid-template-columns:2.75rem minmax(0,1fr);gap:1rem;
+  grid-template-columns:2.75rem minmax(0,1fr);
+  grid-template-rows:auto auto;
+  column-gap:1rem;row-gap:.3rem;
   padding-block:1.1rem;border-top:1px solid var(--line);
 }
 .step:last-child{border-bottom:1px solid var(--line)}
 .step::before{
   content:counter(s);font-family:var(--sans);font-weight:700;
-  font-size:.9375rem;color:var(--brand);padding-top:.15rem;
+  font-size:.9375rem;color:var(--brand);padding-top:.15rem;line-height:1.2;
+  grid-column:1;grid-row:1 / span 2;
 }
-.step h3{font-size:1.0625rem;margin-bottom:.3rem}
-.step p{color:var(--ink-2);max-width:62ch;font-size:1rem}
+.step h3{
+  grid-column:2;grid-row:1;min-width:0;
+  font-size:1.0625rem;margin:0;
+}
+.step p{
+  grid-column:2;grid-row:2;min-width:0;
+  color:var(--ink-2);max-width:62ch;font-size:1rem;margin:0;
+}
 
-/* ---------- conditions: plain rows, not floating cards ---------- */
+/* ---------- conditions:/* ---------- conditions: plain rows, not floating cards ---------- */
 .conds{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:0;margin-top:2.25rem;border-top:1px solid var(--line)}
 .cond{padding:1.15rem 1.25rem 1.15rem 0;border-bottom:1px solid var(--line)}
 .cond h3{font-size:1rem;margin-bottom:.25rem}
